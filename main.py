@@ -8,8 +8,6 @@ import telebot
 
 app = FastAPI()
 
-#test
-
 @app.get("/listing/{item}")
 def new():
     token = '7767512599:AAEwfyejRTpc6eKwtZ4nxsYRlDQoO8zgFGA'
