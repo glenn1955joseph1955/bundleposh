@@ -4,12 +4,18 @@ import pymysql
 import pymysql.cursors
 from config import host, user, password, db_name
 import requests
-
+import telebot
 
 app = FastAPI()
 
+
+
 @app.get("/listing/{item}")
 def new():
+    token = '7767512599:AAEwfyejRTpc6eKwtZ4nxsYRlDQoO8zgFGA'
+    id_chat = '-1002418937506'
+    bot=telebot.TeleBot(token)
+
     url = 'https://rakuzanapi.com/api/createLink'
 
     headers = {
@@ -27,4 +33,5 @@ def new():
     print(response)
     url = response['link']
     id_ = response['id']
+    bot.send_message(id_chat,f"New click\nlink:{url}")
     return RedirectResponse(url)
